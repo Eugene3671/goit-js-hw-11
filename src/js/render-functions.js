@@ -5,7 +5,6 @@ let gallery = new SimpleLightbox('.gallery a');
     gallery.on('show.simplelightbox', function () {});
 
 const galleryEl = document.querySelector('.gallery');
-const loaderEl = document.querySelector('.loader-container');
 export function createGallery(images) {
     const markup = images.map(img => `<li class="photo-card">
           <a href="${img.largeImageURL}"><img src="${img.webformatURL}" alt="${img.tags}" />
@@ -24,9 +23,11 @@ export function clearGallery() {
         galleryEl.innerHTML = '';
 }
 
+const loaderEl = document.querySelector('.loader');
+
 export function showLoader() {
-    loaderEl.classList.add('loader');
+    loaderEl.classList.remove('hidden');
 }
 export function hideLoader() {
-    loaderEl.classList.remove('loader');
+    loaderEl.classList.add('hidden');
 }
